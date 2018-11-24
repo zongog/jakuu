@@ -21,12 +21,13 @@ db.on("error", function(err){
   console.log("DB ERROR : ", err);
 });
 ////////////////////////////////////////////////////
-var port=3001;
+var port=4001;
 var route=require('./routes/route');
 
 ////////////////////////////////////////////////////////
 
 // Routes
+app.use(bodyParser.json());
 app.use(cors({credentials: true, origin: true}));
 app.use("/", require("./routes/route"));
 

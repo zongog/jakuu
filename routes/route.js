@@ -9,6 +9,9 @@ var Drone = require('../models/DroneModel');
 var MongoClient = require('mongodb').MongoClient; ////
 var url = "mongodb://localhost/test";
 ////////////////////////////
+
+var signActions = require('../auth/signActions');
+
 const fs =require('fs');
 
 function DB(){
@@ -66,4 +69,9 @@ router.get('/buy',function(req,res){
 		res.json(boards);
 		});
 });
+
+/*오 병각아 코드가 왜케 더럽니*/
+router.post('/sign-up', signActions.signUp);
+router.post('/login', signActions.signIn);
+
 module.exports = router;
