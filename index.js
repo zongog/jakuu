@@ -27,9 +27,9 @@ var route=require('./routes/route');
 ////////////////////////////////////////////////////////
 
 // Routes
+app.use(bodyParser.json());
 app.use(cors({credentials: true, origin: true}));
 app.use("/", require("./routes/route"));
-
 // Port setting
 
 app.listen(port, function(){

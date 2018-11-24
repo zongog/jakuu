@@ -34,22 +34,34 @@ router.get('/board_list',function(req,res){
 });
 router.get('/member',function(req,res){
 	Member.find({})
-		.exec(function(err, boards){
+            	.exec(function(err, boards){
 			if(err) res.status(403).json({success:false});
 		console.log(boards);
 		res.json(boards);
 		});
 });
 router.get('/drone',function(req,res){
-	Drone.find({})
+	drone.find({part: {$eq:"3"}})
+//		.where('part').equals(3)
+		/*var results_from_mongo = [];
+		var str = Drone.find({part: {$eq:"3"}})
+			if(err){
+				return res.send('error')
+			}
+			console.log(docs)
+			return res.json('drone', {results_from_mongo : docs});
+			})
+*/
 		.exec(function(err, boards){
 			if(err) res.status(403).json({success:false});
 		console.log(boards);
 		res.json(boards);
 		});
 });
-router.get('/drone2',function(req,res){
+router.post('/drone',function(req,res){
+	console.log("post drone");
 	console.log(req.body);
+	console.log("------------------------------------");
 });
 router.get('/buy',function(req,res){
 	var weigh = 0;
